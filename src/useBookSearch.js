@@ -7,6 +7,11 @@ export const useBookSearch = (query, pageNumber) => {
   const [books, setBooks] = useState([])
   const [hasMore, setHasMore] = useState(false)
 
+  // fix for clear prev search
+  useEffect(() => {
+    setBooks([])
+  }, [query])
+
   useEffect(() => {
     let cancel
     setLoading(true)
@@ -37,5 +42,5 @@ export const useBookSearch = (query, pageNumber) => {
       cancel()
     }
   }, [query, pageNumber])
-  return { loading, books, error }
+  return { loading, books, error, hasMore }
 }
