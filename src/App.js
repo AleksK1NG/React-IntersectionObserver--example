@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
+import { useBookSearch } from './useBookSearch'
 
-function App() {
+const App = () => {
+  const [query, setQuery] = useState('')
+  const [pageNumber, setPageNumber] = useState(1)
+
+  useBookSearch(query, pageNumber)
+
+  const handleSearch = (e) => {
+    console.log(e.target.value)
+    setQuery(e.target.value)
+    setPageNumber(1)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="text" placeholder="Search" onChange={handleSearch} />
+      <div>title</div>
+      <div>title</div>
+      <div>title</div>
+      <div>title</div>
+      <div>title</div>
+      <div>title</div>
+      <div>Loading...</div>
+      <div>Error</div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
