@@ -20,7 +20,7 @@ const App = () => {
         if (entries[0].isIntersecting && hasMore) {
           console.log('visible entries => ', entries[0].target.innerHTML)
           // set page for pagination
-          setPageNumber(prevState => prevState + 1)
+          setPageNumber((prevState) => prevState + 1)
         }
       })
       // if last element exists
@@ -50,8 +50,7 @@ const App = () => {
         } else {
           return (
             <div key={book} key={book}>
-              {' '}
-              {book}{' '}
+              {book}
             </div>
           )
         }
